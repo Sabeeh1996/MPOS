@@ -10,7 +10,7 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
 
-            $table->bigIncrements('id')->unsigned();
+            $table->bigIncrements('category_id')->unsigned();
             $table->string('Category',25);
             $table->text('Description');
 
