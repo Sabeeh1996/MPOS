@@ -11,33 +11,25 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
 
             $table->bigIncrements('product_id')->unsigned();
-            $table->string('brand',25);
+            $table->unsignedBigInteger('brand_id');
             $table->text('Product_Description');
-
             $table->unsignedBigInteger('unit_id');
             $table->unsignedBigInteger('category_id');
-
-
             $table->integer('Unit_in_Stock');
             $table->double('Unit_Price');
             $table->text('Discount_Percentage');
-           // $table->integer('Reorder_Level');
-
             $table->unsignedBigInteger('user_id');
 
             $table->index('unit_id');
+            $table->index('brand_id');
             $table->index('category_id');
             $table->index('user_id');
 
+            $table->foreign('brand_id')->references('brand_id')->on('brands')->onDelete('cascade');
+            $table->foreign('unit_id')->references('unit_id')->on('productunit')->onDelete('cascade');
+            $table->foreign('category_id')->references('category_id')->on('categories')->onDelete('cascade');
+            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
 
-            $table->foreign('unit_id')->references('unit_id')->on('productunit');
-            //->onDelete('cascade');
-            $table->foreign('category_id')->references('category_id')->on('categories');
-                //->onDelete('cascade');
-
-            //$table->foreign('order_id')->references('id')->on('orders');
-             $table->foreign('user_id')->references('user_id')->on('users');
-            //->onDelete('cascade');
 
 
 

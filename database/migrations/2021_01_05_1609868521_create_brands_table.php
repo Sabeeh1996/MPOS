@@ -10,7 +10,7 @@ class CreateBrandsTable extends Migration
     {
         Schema::create('brands', function (Blueprint $table) {
 
-            $table->bigIncrements('id')->unsigned();
+            $table->bigIncrements('brand_id')->unsigned();
             $table->string('brand',25);
             $table->text('Description');
 
