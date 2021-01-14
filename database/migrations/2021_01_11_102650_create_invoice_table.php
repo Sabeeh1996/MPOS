@@ -26,7 +26,7 @@ class CreateInvoiceTable extends Migration
             $table->index('user_id');
 
             $table->foreign('customer_id')->references('customer_id')->on('customers')->onDelete('cascade');
-            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
            // $table->foreign('product_id')->references('product_id')->on('categories')->onDelete('cascade');
 
         });
