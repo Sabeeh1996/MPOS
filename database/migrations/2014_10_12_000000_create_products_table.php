@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('category_id');
             $table->integer('Unit_in_Stock');
             $table->double('Unit_Price');
+            $table->boolean('Deleted')->default(0);
             $table->text('Discount_Percentage');
             $table->unsignedBigInteger('user_id');
 
