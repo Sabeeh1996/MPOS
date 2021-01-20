@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Suppliers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class SupplierController extends Controller
 {
@@ -41,6 +42,34 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
+        // validate
+        // read more on validation at http://laravel.com/docs/validation
+        $rules = array(
+            'supplier_name'       => 'required',
+            'supplier_contact'       => 'required',
+            'supplier_address'       => 'required',
+            'email'      => 'required|email',
+          //  'shark_level' => 'required|numeric'
+        );
+        $validator = Validator::make(Input::all(), $rules);
+
+        // process the login
+        if ($validator->fails()) {
+            return Redirect::to('sharks/create')
+                ->withErrors($validator)
+                ->withInput(Input::except('password'));
+        } else {
+            // store
+            $supplier = new supplier;
+            $supplier->name       = Input::get('name');
+            $supplier->email      = Input::get('email');
+            $supplier->shark_level = Input::get('shark_level');
+            $supplier->save();
+
+            // redirect
+            Session::flash('message', 'Successfully created shark!');
+            return Redirect::to('sharks');
+        }
         //
     }
 
