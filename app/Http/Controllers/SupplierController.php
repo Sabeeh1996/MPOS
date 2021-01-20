@@ -15,10 +15,10 @@ class SupplierController extends Controller
     public function index()
     {
         //
-        $suppliers = supplier::all();
+        $suppliers = suppliers::all();
 
         // load the view and pass the sharks
-        return View::make('suppliers.index')
+        return view('suppliers.index')
             ->with('suppliers', $suppliers);
     }
 
@@ -30,6 +30,7 @@ class SupplierController extends Controller
     public function create()
     {
         //
+        return View('suppliers.create');
     }
 
     /**
