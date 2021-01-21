@@ -89,6 +89,11 @@ class SupplierController extends Controller
     public function show(Suppliers $suppliers)
     {
         //
+        $suppliers = suppliers::find($suppliers);
+
+        // show the view and pass the shark to it
+        return Redirect()->route('suppliers.show')
+            ->with('suppliers', $suppliers);
     }
 
     /**
@@ -99,6 +104,11 @@ class SupplierController extends Controller
      */
     public function edit(Suppliers $suppliers)
     {
+        $suppliers = suppliers::find($suppliers);
+
+        // show the edit form and pass the shark
+        return View::make('suppliers.edit')
+            ->with('suppliers', $suppliers);
         //
     }
 

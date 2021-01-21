@@ -33,10 +33,10 @@
                     <!-- we will add this later since its a little more complicated than the other two buttons -->
 
                     <!-- show the shark (uses the show method found at GET /sharks/{id} -->
-                    <a class="btn btn-small btn-success" href="{{ URL::to('sharks/' . $value->id) }}">Show this shark</a>
+                    <a class="btn btn-small btn-success" href="{{ URL::to('suppliers/' . $value->supplier_id) }}">Show this shark</a>
 
                     <!-- edit this shark (uses the edit method found at GET /sharks/{id}/edit -->
-                    <a class="btn btn-small btn-info" href="{{ URL::to('sharks/' . $value->id . '/edit') }}">Edit this shark</a>
+                    <a class="btn btn-small btn-info" href="{{ URL::to('suppliers/' . $value->supplier_id . '/edit') }}">Edit this shark</a>
 
                 </td>
             </tr>
