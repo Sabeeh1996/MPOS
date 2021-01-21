@@ -192,8 +192,9 @@ return [
     'aliases' => [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-        'Validator' => Illuminate\Support\Facades\Validator,
+       // 'Validator' => Illuminate\Support\Facades\Validator::Class,
         //'Input' => Symfony\Component\Console\Input\Input::class,
+        'Input' => Illuminate\Support\Facades\Input::class,
 
         'App' => Illuminate\Support\Facades\App::class,
         'Arr' => Illuminate\Support\Arr::class,

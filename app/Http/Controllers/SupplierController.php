@@ -6,6 +6,11 @@ use App\Models\Suppliers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
+use Illuminate\Support\Facades;
+
+//use Illuminate\Support\Facades\Input;
+//use App\Http\Controllers\Input;
+//use Illuminate\Http\Request;
 class SupplierController extends Controller
 {
     /**
@@ -45,30 +50,32 @@ class SupplierController extends Controller
         // validate
         // read more on validation at http://laravel.com/docs/validation
         $rules = array(
-            'supplier_name'       => 'required',
-            'supplier_contact'       => 'required',
-            'supplier_address'       => 'required',
+           'supplier_name' => 'required',
+            'supplier_contact' => 'required',
+            'supplier_address' => 'required',
             'email'      => 'required|email',
           //  'shark_level' => 'required|numeric'
         );
-        $validator = Validator::make(Input::all(), $rules);
+        $validator = Validator::make($request->all(), $rules);
 
         // process the login
         if ($validator->fails()) {
-            return Redirect::to('sharks/create')
+            return redirect()->route('suppliers.create')
                 ->withErrors($validator)
-                ->withInput(Input::except('password'));
+                ->withInput($request->except('password'));
         } else {
             // store
-            $supplier = new supplier;
-            $supplier->name       = Input::get('name');
-            $supplier->email      = Input::get('email');
-            $supplier->shark_level = Input::get('shark_level');
+            $supplier = new suppliers;
+            $supplier->supplier_name = $request->input('supplier_name');
+            $supplier->supplier_contact      = $request->input('supplier_contact');
+            $supplier->supplier_address      = $request->input('supplier_address');
+            $supplier->email      = $request->input('email');
+          //  $supplier->shark_level = Input::get('shark_level');
             $supplier->save();
 
             // redirect
             Session::flash('message', 'Successfully created shark!');
-            return Redirect::to('sharks');
+            return redirect()->route('suppliers');
         }
         //
     }
