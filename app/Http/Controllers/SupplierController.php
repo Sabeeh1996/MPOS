@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Suppliers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades;
 
 //use Illuminate\Support\Facades\Input;
@@ -75,7 +75,7 @@ class SupplierController extends Controller
 
             // redirect
             Session::flash('message', 'Successfully created shark!');
-            return redirect()->route('suppliers');
+            return redirect()->route('suppliers.index');
         }
         //
     }

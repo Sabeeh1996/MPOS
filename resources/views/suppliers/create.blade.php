@@ -28,15 +28,15 @@
 
     <div class="form-group">
         {{ Form::label('name', 'Supplier Name') }}
-        {{ Form::text('name', Request::old('supplier_name'), array('class' => 'form-control')) }}
+        {{ Form::text('supplier_name', Request::old('supplier_name'), array('class' => 'form-control')) }}
     </div>
     <div class="form-group">
         {{ Form::label('name', 'Supplier Contact') }}
-        {{ Form::text('name', Request::old('supplier_contact'), array('class' => 'form-control')) }}
+        {{ Form::text('supplier_contact', Request::old('supplier_contact'), array('class' => 'form-control')) }}
     </div>
     <div class="form-group">
         {{ Form::label('name', 'Supplier Address') }}
-        {{ Form::text('name', Request::old('supplier_address'), array('class' => 'form-control')) }}
+        {{ Form::text('supplier_address', Request::old('supplier_address'), array('class' => 'form-control')) }}
     </div>
     <div class="form-group">
         {{ Form::label('email', 'Email') }}
